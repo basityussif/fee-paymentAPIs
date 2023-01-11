@@ -1,0 +1,18 @@
+version: '19.0.0'
+services:
+    app:
+       container-name: app
+       restart: always
+       build: .
+       ports:
+         - "8082:8082"
+       depends-on:
+           - mongo
+
+    mongo:
+       container-name: mongo
+       image: mongo
+       volume:
+         - ./data:/data/db
+       ports:
+         - "27017:27017"
